@@ -25,8 +25,13 @@ $$$$$$$$   (_)   $$$$$$$$
 """)
 
 
-       
-# return a random yes or no answer from the following dictionaries
+def maybe(magic):
+    #magic=random.randint(0,9)
+    if magic %2 == 0:
+        return True
+    else:
+        return False
+
 def verboseMaybe(side):
     yRan = ['Yes, absolutely!', 'You already know the answer is yes', 'Affirmative!','Probably.','I would say so.', 'Maybe...', 'Most likely.']
     nRan = ['No, certaintly not!','Not today...','No, definitely not', 'Maybe , maybe not...', 'Ask me later','I dont think so', 'Dubious.']
@@ -37,15 +42,6 @@ def verboseMaybe(side):
        random.shuffle(nRan)
        return(nRan[0])
 
-# If final sum of binary is divisable for 0, return true (yes); else return false (no)
-def maybe(magic):
-    if magic %2 == 0:
-        return True
-    else:
-        return False
-
-
-# calculate the md5 hash of question, than convert the hash into binary, add each binary digit together, return sum
 def convertToBinary(data):
     hash_object = hashlib.md5(data.encode())
     hashed=(hash_object.hexdigest())
@@ -55,7 +51,7 @@ def convertToBinary(data):
 
 
 
-# Start - Ask user their question
+
 data=input("Ask me a yes or no question >> ")
 _bin = convertToBinary(data)
 res = maybe(_bin)
